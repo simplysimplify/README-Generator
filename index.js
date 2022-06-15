@@ -2,7 +2,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 
 
-
+// Sets a variable for the inquirer guy to access when called. Wish I could take credit for the idea but honestly it's too smart to be my own idea. It's so good I almost resent my teachers for not telling us this is the intended way of using the library cause it definitely feels like it is.
 const queries = [
 	{
 		type: "input",
@@ -46,7 +46,7 @@ const queries = [
 	},
 ]
 
-
+// Calls the inquirer guy to assess the variable above and creates an array based on the data parsed from the responses.
 inquirer.prompt(queries).then(response => {
 	const READMEdata  = [
 		Name = response.name,
@@ -59,5 +59,55 @@ inquirer.prompt(queries).then(response => {
 		Tests = response.test,
 	]
 	console.log(READMEdata)
+	createREADME()
 })
 
+function createREADME() {
+	// Creates HTML boilerplate for the employee cards to be put on (provided there isnt already one).
+	console.log("Building README.md")
+	let rmText = `
+Creator/Colaborators: ${Name}
+## Table of Contents
+
+
+* [Description](#description)
+* [Installation](#install)
+* [Usage](#usage)
+* [Tests](#tests)
+
+
+## Description:
+${Description}
+
+
+
+
+## Install:
+${Install}
+
+
+
+
+## Usage:
+${Usage}
+
+
+
+
+## Tests:
+${Tests}
+
+
+
+
+## Liscences:
+${Liscences}
+
+
+
+
+
+`
+	fs.appendFile('README.md', rmText, (err) =>
+	err ? console.error(err) : console.log('File written'))
+}
