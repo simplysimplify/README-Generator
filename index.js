@@ -6,6 +6,11 @@ const inquirer = require('inquirer');
 const queries = [
 	{
 		type: "input",
+		message: "What is the title/name of this application?",
+		name: "name"
+	},
+	{
+		type: "input",
 		message: "What is the name of your GitHub?",
 		name: "github"
 	},
@@ -41,6 +46,18 @@ const queries = [
 	},
 ]
 
-function intCreate() {
-	inquirer.prompt(queries)
-} 
+
+inquirer.prompt(queries).then(response => {
+	const READMEdata  = [
+		Name = response.name,
+		Github = response.github,
+		Email = response.email,
+		Description = response.description,
+		Install = response.install,
+		Usage = response.usage,
+		Liscences = response.liscences,
+		Tests = response.test,
+	]
+	console.log(READMEdata)
+})
+
