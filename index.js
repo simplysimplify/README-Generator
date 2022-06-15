@@ -63,7 +63,7 @@ inquirer.prompt(queries).then(response => {
 })
 
 function createREADME() {
-	// Creates HTML boilerplate for the employee cards to be put on (provided there isnt already one).
+	// Creates README boilerplate for the employee cards to be put on (provided there isnt already one).
 	console.log("Building README.md")
 	let rmText = `
 Creator/Colaborators: ${Name}
